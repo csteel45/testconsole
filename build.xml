@@ -1,0 +1,163 @@
+<?xml version="1.0" standalone="yes"?>
+<project name="Verification Service Test Suite" basedir="." default="run">
+
+	<property name="jaxb.home" value="." />
+	<property name="reports" value="reports" />
+	<property name="backup.dir" value="backups" />
+
+	<path id="classpath">
+		<pathelement path="classes" />
+		<fileset dir="lib/" includes="*.jar" />
+	</path>
+
+	<path id="srcpath">
+		<pathelement path="src" />
+		<pathelement path="generated" />
+	</path>
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="classpath" />
+	</taskdef>
+
+	<target name="gen" description="Generate Java source from XML schema files" >
+		<echo message="Compiling the schema..." />
+		<mkdir dir="generated" />
+		<!-- catalog="catalog.cat"  -->
+		<xjc schema="schemas/uscis/xsd/services/verification/2.0/verification.xsd" 
+										package="com.tibco.vs.ut" destdir="generated">
+			<produces dir="generated" includes="**/*.java" />
+		</xjc>
+	</target>
+	
+	<!--compile Java source files-->
+	<target name="compile" description="Compile all Java source files">
+		<echo message="Compiling the java source files..." />
+		<mkdir dir="classes" />
+		<javac destdir="classes" debug="on">
+			<src refid="srcpath" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compile">
+		<delete dir="${reports}" />
+		<mkdir dir="${reports}" />
+
+		<junit printsummary="yes" fork="yes" haltonfailure="no" haltonerror="no" maxmemory="256m">
+		<jvmarg value="-Xms256m" />
+		<jvmarg value="-Xmx256m" />
+			<formatter type="xml" />
+			<classpath refid="classpath" />
+			<batchtest fork="yes" todir="${reports}">
+				<fileset dir="src">
+					<include name="com/tibco/vs/ut/CCD/TestSuite.java" />
+					<include name="com/tibco/vs/ut/SEVIS/TestSuite.java" />
+					<include name="com/tibco/vs/ut/C4/TestSuite.java" />
+					<include name="com/tibco/vs/ut/TA/TestSuite.java" />
+					<!-- include name="com/tibco/vs/ut/PIERS/TestSuite.java" /-->
+					<!-- include name="com/tibco/vs/ut/Integration/TestSuite.java" /-->
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<junitreport todir="${reports}">
+			<fileset dir="${reports}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${reports}/html" />
+		</junitreport>
+
+		<property name="browser" location="C:/Program Files/Internet Explorer/iexplore.exe" />
+		<property name="file" location="${reports}/html/index.html" />
+
+		<exec executable="${browser}" spawn="true">
+			<arg value="${file}" />
+		</exec>
+
+	</target>
+
+	<target name="run" depends="javadoc,test" description="Run the sample app">
+		<echo message="done" />
+	</target>
+
+	<target name="javadoc" description="Generates javadocs" depends="compile">
+		<echo message="Generating javadoc..." />
+		<mkdir dir="docs/api" />
+		<javadoc destdir="docs/api"            
+			author="true"
+           	version="true"
+           	use="true"
+			windowtitle="Verification Service Test Cases" 
+			useexternalfile="yes">
+			<fileset dir=".">
+				<include name="src/**/*.java" />
+				<include name="generated/**/*.java" />
+			</fileset>
+			<classpath refid="classpath" />
+		</javadoc>
+	</target>
+	
+	<target name="jar" description="Create Test Console jar" depends="compile" >
+	<!-- Don't use jar task. It screws up the ClassPath in the Manifest. -->
+        <exec executable="jar">
+        	<arg value="cfM" />
+        	<arg value="testconsole.jar" />
+        	<arg value="META-INF" />
+        	<arg value="images" />
+        	<arg value="docs" />
+        	<arg value="-C" />
+        	<arg value="classes" />
+        	<arg value="com" />
+        </exec>
+	</target>
+	
+	<target name="zip" description="Create a ZIP file for distribution" depends="jar, javadoc" >
+       <jar jarfile="testconsole.zip" basedir="." >
+           <include name="testconsole.jar"/>
+           <include name="lib/**"/>
+           <include name="docs/**"/>
+           <include name="certs/**"/>
+          <include name="xml/**"/>
+          <include name="jndi.properties"/>
+       </jar> 
+	</target>
+
+    <!-- Does backup of src, etc, lib directories-->
+    <target name="backup" description="Adds lib and images dirs to backup.">
+    <tstamp />
+		<mkdir dir="${backup.dir}" />
+        <jar jarfile="${backup.dir}/backup-${DSTAMP}-${TSTAMP}.jar"
+            basedir="."
+            update="false">
+            <include name="src/**"/>
+            <include name="generated/**"/>
+            <include name="lib/**"/>
+            <include name="images/**"/>
+            <include name="schemas/**"/>
+            <include name="certs/**"/>
+            <include name="xml/**"/>
+            <include name="build.xml"/>
+            <include name="run.bat"/>
+            <include name="cc.bat"/>
+            <include name="jndi.properties"/>
+            <include name="xjc.bat"/>
+        </jar>
+    </target>
+
+	<target name="testconsole" description="Launch the Test Console.">
+        <java jar="testconsole.jar" fork="true" spawn="true" jvmargs="-Xms256M -Xmx256M -XX:MaxGCPauseMillis=1 -XX:YoungGenerationSizeIncrement=50"/>
+	</target>
+
+	<target name="clean" description="Deletes all the class and report artifacts.">
+		<delete dir="docs/api" />
+		<delete dir="classes" />
+		<delete dir="reports" />
+		<delete file="testconsole.jar" />
+	</target>
+
+	<target name="realclean" description="Deletes all the schema generated artifacts." depends="clean" >
+		<delete dir="generated" />
+	</target>
+
+</project>
+
