@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<project name="Verification Service Test Suite" basedir="." default="run">
+<project name="TestConsole" basedir="." default="run">
 
 	<property name="jaxb.home" value="." />
 	<property name="reports" value="reports" />
