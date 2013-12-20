@@ -24,7 +24,7 @@
 		<mkdir dir="generated" />
 		<!-- catalog="catalog.cat"  -->
 		<xjc schema="schemas/uscis/xsd/services/verification/2.0/verification.xsd" 
-										package="com.tibco.vs.ut" destdir="generated">
+										package="com.softwareaggs.vs.ut" destdir="generated">
 			<produces dir="generated" includes="**/*.java" />
 		</xjc>
 	</target>
@@ -50,12 +50,12 @@
 			<classpath refid="classpath" />
 			<batchtest fork="yes" todir="${reports}">
 				<fileset dir="src">
-					<include name="com/tibco/vs/ut/CCD/TestSuite.java" />
-					<include name="com/tibco/vs/ut/SEVIS/TestSuite.java" />
-					<include name="com/tibco/vs/ut/C4/TestSuite.java" />
-					<include name="com/tibco/vs/ut/TA/TestSuite.java" />
-					<!-- include name="com/tibco/vs/ut/PIERS/TestSuite.java" /-->
-					<!-- include name="com/tibco/vs/ut/Integration/TestSuite.java" /-->
+					<include name="com/softwareaggs/vs/ut/CCD/TestSuite.java" />
+					<include name="com/softwareaggs/vs/ut/SEVIS/TestSuite.java" />
+					<include name="com/softwareaggs/vs/ut/C4/TestSuite.java" />
+					<include name="com/softwareaggs/vs/ut/TA/TestSuite.java" />
+					<!-- include name="com/Software AG GS/vs/ut/PIERS/TestSuite.java" /-->
+					<!-- include name="com/Software AG GS/vs/ut/Integration/TestSuite.java" /-->
 				</fileset>
 			</batchtest>
 		</junit>
@@ -145,7 +145,12 @@
     </target>
 
 	<target name="testconsole" description="Launch the Test Console.">
-        <java jar="testconsole.jar" fork="true" spawn="true" jvmargs="-Xms256M -Xmx256M -XX:MaxGCPauseMillis=1 -XX:YoungGenerationSizeIncrement=50"/>
+        <java jar="testconsole.jar" fork="true">
+	 		<jvmarg value="-Xms512M"/>
+	 		<jvmarg value="-Xmx512M"/>
+	 		<jvmarg value="-XX:MaxGCPauseMillis=1"/> 
+	 		<jvmarg value="-XX:YoungGenerationSizeIncrement=50"/>
+	 	</java>
 	</target>
 
 	<target name="clean" description="Deletes all the class and report artifacts.">

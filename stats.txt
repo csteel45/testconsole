@@ -256,3 +256,13 @@ Simultaneous,xml/requests/loadtest/CCD,125,0,0.51276
 Simultaneous,xml/requests/loadtest/CCD,150,0,0.5113534
 Simultaneous,null,1,0,0.5
 Simultaneous,null,1,0,0.5
+Simultaneous,null,100,0,0.50003
+Simultaneous,null,100,0,4.43780832E8
+Sequential,null,100,0.50003
+Simultaneous,null,100,0,0.85039
+Simultaneous,null,100,0,0.51001
+Simultaneous,null,1,1,0.0
+Simultaneous,null,1,1,0.0
+Simultaneous,null,1,1,0.0
+Simultaneous,null,1,1,0.0
+Simultaneous,null,1,1,0.0
