@@ -266,3 +266,22 @@ Simultaneous,null,1,1,0.0
 Simultaneous,null,1,1,0.0
 Simultaneous,null,1,1,0.0
 Simultaneous,null,1,1,0.0
+Simultaneous,null,1,1,0.0
+Sequential,null,1,0.0
+Performance Test, Wed Jun 17 22:20:46 EDT 2015
+Simultaneous,xml/requests/loadtest/C4,1,1,0.0
+Simultaneous,xml/requests/loadtest/C4,10,10,0.0
+Simultaneous,xml/requests/loadtest/C4,25,25,0.0
+Simultaneous,xml/requests/loadtest/C4,50,50,0.0
+Simultaneous,xml/requests/loadtest/C4,75,75,0.0
+Simultaneous,xml/requests/loadtest/C4,100,100,0.0
+Simultaneous,xml/requests/loadtest/C4,125,125,0.0
+Simultaneous,xml/requests/loadtest/C4,150,150,0.0
+Simultaneous,xml/requests/loadtest/CCD,1,1,0.0
+Simultaneous,xml/requests/loadtest/CCD,10,10,0.0
+Simultaneous,xml/requests/loadtest/CCD,25,25,0.0
+Simultaneous,xml/requests/loadtest/CCD,50,50,0.0
+Simultaneous,xml/requests/loadtest/CCD,75,75,0.0
+Simultaneous,xml/requests/loadtest/CCD,100,100,0.0
+Simultaneous,xml/requests/loadtest/CCD,125,125,0.0
+Simultaneous,xml/requests/loadtest/CCD,150,150,0.0
