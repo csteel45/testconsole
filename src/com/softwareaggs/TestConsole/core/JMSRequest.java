@@ -1,17 +1,17 @@
 /*
  * @(#)RequestMessage.java
  * 
- * Copyright � 2007 TIBCO Software, Inc. All Rights Reserved.
+ * Copyright � 2007 SOFTWARE AG GS All Rights Reserved.
  * 
- * This software is the confidential and proprietary information of TIBCO
+ * This software is the confidential and proprietary information of SOFTWARE AG GS
  * Software, Inc. ("Confidential Information"). You shall not disclose such
  * Confidential Information and shall use it only in accordance with the terms
- * of the license agreement you entered into with TIBCO Software.
+ * of the license agreement you entered into with SOFTWARE AG GS.
  * 
- * TIBCO MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
+ * SOFTWARE AG GS MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
  * SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
- * NON-INFRINGEMENT. TIBCO SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
+ * NON-INFRINGEMENT. SOFTWARE AG GS SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
  * LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
  * DERIVATIVES.
  * 
@@ -121,28 +121,28 @@ public class JMSRequest extends RequestMessage {
 
 	@Override
 	public void setQueryTarget(String queryTarget) {
-		com.tibco.vs.ut.String queryTargetS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String queryTargetS = new com.SOFTWARE AG GS.vs.ut.String();
 		queryTargetS.setValue(queryTarget);
 		this.setQueryTarget(queryTargetS);
 	}
 
 	@Override
 	public void setSourceSystemID(String sourceSystemID) {
-		com.tibco.vs.ut.String sourceSystemIDS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String sourceSystemIDS = new com.SOFTWARE AG GS.vs.ut.String();
 		sourceSystemIDS.setValue(sourceSystemID);
 		this.setSourceSystemID(sourceSystemIDS);
 	}
 
 	@Override
 	public void setTransactionID(String transactionID) {
-		com.tibco.vs.ut.String transactionIDS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String transactionIDS = new com.SOFTWARE AG GS.vs.ut.String();
 		transactionIDS.setValue(transactionID);
 		this.setSourceTransactionID(transactionIDS);
 	}
 
 	@Override
 	public void setSourceUserID(String sourceUserID) {
-		com.tibco.vs.ut.String sourceUserIDS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String sourceUserIDS = new com.SOFTWARE AG GS.vs.ut.String();
 		sourceUserIDS.setValue(sourceUserID);
 		this.setSourceUserID(sourceUserIDS);
 	}
@@ -195,12 +195,12 @@ public class JMSRequest extends RequestMessage {
 		// with the JDBC query in CLAIMS4.
 		cal.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
 
-		com.tibco.vs.ut.Date date = new com.tibco.vs.ut.Date();
+		com.SOFTWARE AG GS.vs.ut.Date date = new com.SOFTWARE AG GS.vs.ut.Date();
 		date.setValue(cal);
 
-		JAXBElement<com.tibco.vs.ut.Date> element = new JAXBElement<com.tibco.vs.ut.Date>(
+		JAXBElement<com.SOFTWARE AG GS.vs.ut.Date> element = new JAXBElement<com.SOFTWARE AG GS.vs.ut.Date>(
 				new QName("http://niem.gov/niem/niem-core/2.0", "Date"),
-				com.tibco.vs.ut.Date.class, date);
+				com.SOFTWARE AG GS.vs.ut.Date.class, date);
 
 		DateType birthDateDT = new DateType();
 		birthDateDT.getDateRepresentation().add(element);
@@ -213,7 +213,7 @@ public class JMSRequest extends RequestMessage {
 	@Override
 	public void setAlienNumber(String alienNumber) {
 		IdentificationType identification = new IdentificationType();
-		com.tibco.vs.ut.String identificationID = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String identificationID = new com.SOFTWARE AG GS.vs.ut.String();
 		identificationID.setValue(alienNumber);
 		identification.getIdentificationID().add(identificationID);
 
@@ -223,7 +223,7 @@ public class JMSRequest extends RequestMessage {
 	@Override
 	public void setSSN(String ssn) {
 		IdentificationType identification = new IdentificationType();
-		com.tibco.vs.ut.String identificationID = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String identificationID = new com.SOFTWARE AG GS.vs.ut.String();
 		identificationID.setValue(ssn);
 		identification.getIdentificationID().add(identificationID);
 
@@ -232,7 +232,7 @@ public class JMSRequest extends RequestMessage {
 
 	@Override
 	public void setVisaNumber(String visaNumber) {
-		com.tibco.vs.ut.String visaNumberS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String visaNumberS = new com.SOFTWARE AG GS.vs.ut.String();
 		visaNumberS.setValue(visaNumber);
 		criteria.setVisaNumberID(visaNumberS);
 	}
@@ -240,7 +240,7 @@ public class JMSRequest extends RequestMessage {
 	@Override
 	public void setCitizenshipNumber(String citizenshipNumber) {
 		IdentificationType identification = new IdentificationType();
-		com.tibco.vs.ut.String identificationID = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String identificationID = new com.SOFTWARE AG GS.vs.ut.String();
 		identificationID.setValue(citizenshipNumber);
 		identification.getIdentificationID().add(identificationID);
 
@@ -250,7 +250,7 @@ public class JMSRequest extends RequestMessage {
 	@Override
 	public void setPassportNumber(String passportNumber) {
 		IdentificationType identification = new IdentificationType();
-		com.tibco.vs.ut.String identificationID = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String identificationID = new com.SOFTWARE AG GS.vs.ut.String();
 		identificationID.setValue(passportNumber);
 		identification.getIdentificationID().add(identificationID);
 
@@ -260,7 +260,7 @@ public class JMSRequest extends RequestMessage {
 	@Override
 	public void setSevisID(String studentID) {
 		IdentificationType identification = new IdentificationType();
-		com.tibco.vs.ut.String identificationID = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String identificationID = new com.SOFTWARE AG GS.vs.ut.String();
 		identificationID.setValue(studentID);
 		identification.getIdentificationID().add(identificationID);
 
@@ -269,7 +269,7 @@ public class JMSRequest extends RequestMessage {
 
 	@Override
 	public void setVisaFoilNumber(String visaFoilNumber) {
-		com.tibco.vs.ut.String visaFoilNumberS = new com.tibco.vs.ut.String();
+		com.SOFTWARE AG GS.vs.ut.String visaFoilNumberS = new com.SOFTWARE AG GS.vs.ut.String();
 		visaFoilNumberS.setValue(visaFoilNumber);
 
 		criteria.setVisaFoilNumber(visaFoilNumberS);

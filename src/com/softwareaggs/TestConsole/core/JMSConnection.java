@@ -1,17 +1,17 @@
 /*
  * @(#)JMSConnection.java
  * 
- * Copyright � 2007 TIBCO Software, Inc. All Rights Reserved.
+ * Copyright � 2007 SOFTWARE AG GS All Rights Reserved.
  * 
- * This software is the confidential and proprietary information of TIBCO
+ * This software is the confidential and proprietary information of SOFTWARE AG GS
  * Software, Inc. ("Confidential Information"). You shall not disclose such
  * Confidential Information and shall use it only in accordance with the terms
- * of the license agreement you entered into with TIBCO Software.
+ * of the license agreement you entered into with SOFTWARE AG GS.
  * 
- * TIBCO MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
+ * SOFTWARE AG GS MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
  * SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
- * NON-INFRINGEMENT. TIBCO SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
+ * NON-INFRINGEMENT. SOFTWARE AG GS SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
  * LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
  * DERIVATIVES.
  * 
@@ -47,11 +47,11 @@ import org.junit.BeforeClass;
  * This class servers as the base class for the Unit Test Suites. It provides
  * utility methods for sending and receiving requests, as well as reading and
  * writing XML files. It performs the connection to the ESB.
- * 
+ *
  * @author Christopher Steel, Chief Solution Architect - Software AG GS
  * @version Dec 10, 2013 7:06:23 PM
- * 
- * @see com.softwareaggs.naming.TibcoCFLookup
+ *
+ * @see com.softwareaggs.naming.SOFTWARE AG GSCFLookup
  */
 public class JMSConnection implements Connection {
 
@@ -63,7 +63,8 @@ public class JMSConnection implements Connection {
 	static TemporaryQueue tempQueue = null;
 	static QueueSession queueSession = null;
 	static QueueReceiver receiver = null;
-	protected final static Random random;
+	protected final static Random random = new Random(
+			System.currentTimeMillis());;
 	static long sequenceNumber;
 	static final java.lang.String TempQueueFactoryName = "SSLQueueConnectionFactoryMGMT";
 	protected static final java.lang.String COMMAND_DEST_NAME = "US.DHS.USCIS.ESB.VerificationService.Verify.v1.0";
@@ -77,15 +78,11 @@ public class JMSConnection implements Connection {
 
 	private static boolean MOCK_RUN = true;
 
-	static {
-		random = new Random(System.currentTimeMillis());
-	}
-
 	/**
 	 * This method is called before each of the unit test classes. It
 	 * establishes the connection to the ESB and initializes the requisite
 	 * member variables.
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
@@ -103,7 +100,7 @@ public class JMSConnection implements Connection {
 		try {
 			// System.err.println("creating initial queue context");
 			// create initial queue context
-			// TibcoCFLookup lookup = new TibcoCFLookup();
+			// SOFTWARE AG GSCFLookup lookup = new SOFTWARE AG GSCFLookup();
 			Properties props = new java.util.Properties();
 			props.load(new FileInputStream("jndi.properties"));
 			// Context qctx = lookup.getInitialContext(props);
@@ -352,7 +349,7 @@ public class JMSConnection implements Connection {
 		return response;
 	}
 
-	public synchronized java.lang.String getNextSequenceNumber() {
+	public synchronized String getNextSequenceNumber() {
 		return Long.toString(sequenceNumber++);
 	}
 

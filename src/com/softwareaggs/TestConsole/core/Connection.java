@@ -1,21 +1,21 @@
 /**
  * @(#)Connection.java $Revision: 1.0 $ $Date: Aug 31, 2007 7:06:23 PM $
  * 
- *                     Copyright � 2007 TIBCO Software, Inc. All Rights
+ *                     Copyright � 2007 SOFTWARE AG GS All Rights
  *                     Reserved.
  * 
  *                     This software is the confidential and proprietary
- *                     information of TIBCO Software, Inc.
+ *                     information of SOFTWARE AG GS
  *                     ("Confidential Information"). You shall not disclose such
  *                     Confidential Information and shall use it only in
  *                     accordance with the terms of the license agreement you
- *                     entered into with TIBCO Software.
+ *                     entered into with SOFTWARE AG GS.
  * 
- *                     TIBCO MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE
+ *                     SOFTWARE AG GS MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE
  *                     SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED,
  *                     INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
  *                     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
- *                     NON-INFRINGEMENT. TIBCO SHALL NOT BE LIABLE FOR ANY
+ *                     NON-INFRINGEMENT. SOFTWARE AG GS SHALL NOT BE LIABLE FOR ANY
  *                     DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING,
  *                     MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
  *                     DERIVATIVES.

@@ -1,28 +1,28 @@
 /*******************************************************************************
  * Copyright � 2007 FortMoon Consulting, Inc. All Rights Reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * Redistributions of source code must retain the above copyright notice, this
  * list of conditions, the following disclaimer, and the original author.
- * 
+ *
  * Redistributions in binary form must reproduce the above copyright notice,
  * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.
- * 
+ *
  * This software is the confidential and proprietary information of FortMoon
  * Consulting, Inc. ("Confidential Information"). You shall not disclose such
  * Confidential Information and shall use it only in accordance with the terms
  * of the license agreement you entered into with FortMoon.
- * 
+ *
  * FORTMOON MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE
  * SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
  * NON-INFRINGEMENT. FORTMOON SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
  * LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
  * DERIVATIVES.
- * 
+ *
  * Copyright Version 1.0
  ******************************************************************************/
 package com.softwareaggs.TestConsole.util;
@@ -41,16 +41,18 @@ import javax.swing.JFrame;
 import javax.swing.JWindow;
 import javax.swing.Timer;
 
+import org.apache.log4j.Logger;
+
 /**
  * Class representing an application splash screen.
  * <p>
  * Typical usage:
- * 
+ *
  * <pre>
  * SplashScreen splashScreen = new SplashScreen(&quot;/com/company/splash.jpg&quot;);
  * splashScreen.open(3000);
  * </pre>
- * 
+ *
  * @author Christopher Steel, Chief Solution Architect - Software AG GS
  * @version Dec 10, 2013 7:06:23 PM
  */
@@ -59,12 +61,13 @@ public class SplashScreen extends JWindow {
 	private transient Image image_;
 	private int x_, y_, width_, height_;
 	private MediaTracker mediaTracker;
+	private final Logger log = Logger.getLogger(SplashScreen.class);
 
 	/**
 	 * Create a new splash screen object of the specified image. The image file
 	 * is located and referred to through the deployment, not the local file
 	 * system; A typical value might be "/com/company/splash.jpg".
-	 * 
+	 *
 	 * @param imageFileName
 	 *            Name of image file resource to act as splash screen.
 	 */
@@ -149,7 +152,7 @@ public class SplashScreen extends JWindow {
 
 	/**
 	 * Paint the splash screen window.
-	 * 
+	 *
 	 * @param graphics
 	 *            The graphics instance.
 	 */
