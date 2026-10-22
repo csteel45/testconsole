@@ -1,0 +1,7 @@
+# Build output
+target/
+classes/
+*.jar
+
+# Sensitive material (keys, certificates)
+certs/
